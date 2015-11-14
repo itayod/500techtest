@@ -1,13 +1,13 @@
 'use strict';
 
 angular.module('500techtest')
-.controller('rssFeedCtrl',function($scope,getFeed,urlFeeds){
+.controller('rssFeedCtrl',function($scope,$routeParams,getFeed,urlFeeds){
     
     var init = function(){
-        console.log('hi')
-        var url = urlFeeds.getSelectedUrl();
+        var url = urlFeeds.getUrls();
         if(url){
-            getFeeds(url)
+            var selectedUrl = url[$routeParams.urlId].value
+            getFeeds(selectedUrl)
         }
     }
     var getFeeds = function(url){

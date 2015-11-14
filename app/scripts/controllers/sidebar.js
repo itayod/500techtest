@@ -2,7 +2,10 @@
 
 angular.module('500techtest')
 .controller('sidebarCtrl',function($scope,urlFeeds){
-    $scope.urls = []
+    
+    var init = function(){
+        $scope.urls = urlFeeds.getUrls()
+    }
     $scope.addUrl = function(url){
         urlFeeds.addUrl(url,updateUrls)
     }
@@ -14,7 +17,8 @@ angular.module('500techtest')
     }
     var updateUrls = function(urls){
         $scope.urls = urls;
+        localStorage.setItem('urls', JSON.stringify(urls));
     }
-
+    init();
 })
 

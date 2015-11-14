@@ -19,6 +19,16 @@ angular.module('500techtest', ['ngResource','ngRoute'])
         });
 
     })
-    .run(function($location){
-        $location.path('/selecturl')
+    .run(function($location,urlFeeds,rssUrl){
+        var savedUrls =  localStorage.getItem('urls');
+        var urls = savedUrls ? JSON.parse(savedUrls) : [];
+        urlFeeds.setUrls(urls)
+        
+        var selectedUrl = localStorage.getItem('selectedId') || null;
+        urlFeeds.setSelectedUrl(selectedUrl)
+        if(typeof selectedUrl !== 'undefined'){
+            $location.path(rssUrl+selectedUrl)
+        }else{
+            $location.path('/selecturl')
+        }
     })    

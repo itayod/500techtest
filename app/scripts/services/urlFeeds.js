@@ -2,14 +2,30 @@
 
 angular.module('500techtest')
 .service('urlFeeds',function($rootScope,$location,rssUrl,historyLogger){
-    var urls = [];
-    var selectedUrl = '';
+    var urls = null;
+    var selectedUrl = null;
     var reorderUrls = function(){
         for(var i = 0; i < urls.length; i++){
             urls[i].id = i
         }
     }
     return{
+        setUrls: function(data){            
+            urls = data;
+        },
+        setSelectedUrl: function(data){            
+            selectedUrl = data;
+        },
+        getUrls: function(){
+            return urls;
+        },
+        getSelectedUrl: function(){
+            //todo do something if urls/selectedUrl doesnt exist
+            if(typeof selectedUrl !== null){
+                return urls[selectedUrl].value;
+            }
+            return false
+        },
         addUrl: function(url,callback){
             var id = urls.length
             var newUrl = {'id':id,'value':url}
@@ -27,23 +43,19 @@ angular.module('500techtest')
             historyLogger.addToLog('url removed',url.value)
             this.selectUrl(urls.length-1,callback)
         },
-        getSelectedUrl: function(){
-            //todo do something if urls/selectedUrl doesnt exist
-            if(typeof selectedUrl === 'number'){
-                return urls[selectedUrl].value;
-            }
-            return false
-        },
         selectUrl: function(id,callback){
             
-            if(typeof selectedUrl === 'number'){
+            if(typeof selectedUrl !== null){
                 if(urls[selectedUrl]){
                     urls[selectedUrl].selected = false 
                 }
             }
             urls[id].selected = true;
             $location.path(rssUrl+id)
-            selectedUrl = id;
+            
+            this.setSelectedUrl(id)
+            localStorage.setItem('selectedId', id);
+            
             return callback(urls)
         }
     }
