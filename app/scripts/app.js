@@ -1,9 +1,10 @@
 'use strict';
 
-angular.module('500techtest', ['ngRoute'])
+angular.module('500techtest', ['ngResource','ngRoute'])
 
     .constant('version', 'v0.1.0')
     .constant('rssUrl', '/rss/')
+    .constant('googleFeedApi', 'http://ajax.googleapis.com/ajax/services/feed/load')
     
     .config(function($locationProvider,$routeProvider) {
 
@@ -18,4 +19,6 @@ angular.module('500techtest', ['ngRoute'])
         });
 
     })
-    
+    .run(function($location){
+        $location.path('/selecturl')
+    })    

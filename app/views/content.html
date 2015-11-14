@@ -1,1 +1,11 @@
-{{a}}
+
+<div ng-controller='rssFeedCtrl'>
+    <feed 
+    ng-repeat='entry in entries' 
+    title='{{entry.title}}' 
+    date='{{entry.publishedDate}}'
+    content='{{entry.content}}'
+    ></feed>
+    {{error}}
+</div>
+    

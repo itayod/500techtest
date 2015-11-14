@@ -39,19 +39,24 @@
 
   <!-- build:css(.tmp) styles/main.min.css -->
   <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="scripts/directives/rssFeed/feed.css">
   <!-- endbuild -->
 
 </head>
 
 <body ontouchstart ng-controller="MainCtrl">
-    
+        examples:<br>
+http://www.feedforall.com/sample.xml<br>
+http://www.feedforall.com/sample-feed.xml<br>
+http://www.feedforall.com/blog-feed.xml<br>
+http://www.rss-specifications.com/blog-feed.xml<br>
 <div class="sidebar" ng-include="'views/partials/header.html'">
 </div>
 <div class="app-wrapper">
     <div class="sidebar" ng-include="'views/partials/sidebar.html'">
     </div>
     <div class="main text-center" ng-include="'views/partials/rssfeeds.html'">
-        
+        <ng-view></ng-view>
     </div>
     
 </div>
@@ -62,6 +67,7 @@
   <script src="/bower_components/jquery/dist/jquery.js"></script>
   <script src="/bower_components/angular/angular.js"></script>
   <script src="/bower_components/angular-route/angular-route.js"></script>
+  <script src="/bower_components/angular-resource/angular-resource.js"></script>
   <!-- endbower -->
   
   <!-- endbuild -->
@@ -71,6 +77,8 @@
   <script src="scripts/controllers/main.js"></script>
   <script src="scripts/controllers/sidebar.js"></script>
   <script src="scripts/controllers/rssFeed.js"></script>
+  <script src="scripts/directives/rssFeed/feed.js"></script>
+  <script src="scripts/services/getFeed.js"></script>
   <script src="scripts/services/urlFeeds.js"></script>
   <!-- endbuild -->
 

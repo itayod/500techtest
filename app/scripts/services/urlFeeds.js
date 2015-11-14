@@ -25,8 +25,12 @@ angular.module('500techtest')
             reorderUrls();
             this.selectUrl(urls.length-1,callback)
         },
-        getUrls: function(){
-            return urls;
+        getSelectedUrl: function(){
+            //todo do something if urls/selectedUrl doesnt exist
+            if(typeof selectedUrl === 'number'){
+                return urls[selectedUrl].value;
+            }
+            return false
         },
         selectUrl: function(id,callback){
             
@@ -38,7 +42,6 @@ angular.module('500techtest')
             urls[id].selected = true;
             $location.path(rssUrl+id)
             selectedUrl = id;
-            console.log(urls)
             return callback(urls)
         }
     }
