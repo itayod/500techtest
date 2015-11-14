@@ -4,7 +4,7 @@
             <div class="input-group custom-search-form">
                 <input type="text" class="form-control" placeholder="input url" ng-model='newUrl'>
                 <span class="input-group-btn">
-                <button class="btn btn-default" type="button">
+                <button class="btn btn-default" type="button" ng-click="addUrl(newUrl)">
                     <i class="glyphicon glyphicon-search"></i>
                 </button>
             </span>
@@ -13,8 +13,19 @@
         </div>
     </div>
 
-    <div class="sidebar-url-list">
+<div class="sidebar-url-list">
 
-
+        <ul class="nav masthead-nav">
+            <li ng-repeat="url in urls |orderBy:'-id'" ng-class="{active: $path() == '/'}">
+                <div class="btn btn-default sidebar-rss-item" role="button">
+                    <span class="sidebar-rss-link col-xs-10" >
+                        <a href="#/rss/{{url.id}}" role="button">
+                            {{url.value}} 
+                        </a>
+                    </span>
+                   <div class='sidebar-xbutton col-xs-2' ng-click='removeUrl(url)'>X</div>
+                </div>
+            </li>
+          </ul>
     </div>
 </div>
