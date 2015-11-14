@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('500techtest')
-.service('urlFeeds',function($rootScope,$location,rssUrl){
+.service('urlFeeds',function($rootScope,$location,rssUrl,historyLogger){
     var urls = [];
     var selectedUrl = '';
     var reorderUrls = function(){
@@ -14,6 +14,7 @@ angular.module('500techtest')
             var id = urls.length
             var newUrl = {'id':id,'value':url}
             urls.push(newUrl);
+            historyLogger.addToLog('url added',url)
             this.selectUrl(id,callback)
         },
         removeUrl: function(url,callback){
@@ -23,6 +24,7 @@ angular.module('500techtest')
                 urls.splice(index, 1);
             }
             reorderUrls();
+            historyLogger.addToLog('url removed',url.value)
             this.selectUrl(urls.length-1,callback)
         },
         getSelectedUrl: function(){
