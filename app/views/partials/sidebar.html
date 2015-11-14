@@ -19,7 +19,7 @@
             <li ng-repeat="url in urls |orderBy:'-id'" ng-class="{active: $path() == '/'}">
                 <div class="btn btn-default sidebar-rss-item" role="button">
                     <span class="sidebar-rss-link col-xs-10" >
-                        <a href="#/rss/{{url.id}}" role="button">
+                        <a href="#/rss/{{url.id}}" class="col-xs-12" role="button">
                             {{url.value}} 
                         </a>
                     </span>
