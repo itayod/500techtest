@@ -17,9 +17,12 @@
 
         <ul class="nav masthead-nav">
             <li ng-repeat="url in urls |orderBy:'-id'" ng-class="{active: $path() == '/'}">
-                <div class="btn btn-default sidebar-rss-item" role="button">
-                    <span class="sidebar-rss-link col-xs-10" >
-                        <a href="#/rss/{{url.id}}" class="col-xs-12" role="button">
+                <div class="btn btn-default sidebar-rss-item"
+                     ng-class="{'selected': url.selected}"
+                     role="button">
+                    <span 
+                        class="sidebar-rss-link col-xs-10" ng-click="selectUrl(url.id)">
+                        <a class="col-xs-12" role="button">
                             {{url.value}} 
                         </a>
                     </span>

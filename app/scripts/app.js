@@ -3,6 +3,7 @@
 angular.module('500techtest', ['ngRoute'])
 
     .constant('version', 'v0.1.0')
+    .constant('rssUrl', '/rss/')
     
     .config(function($locationProvider,$routeProvider) {
 

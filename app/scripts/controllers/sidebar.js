@@ -9,6 +9,9 @@ angular.module('500techtest')
     $scope.removeUrl = function(url){
         urlFeeds.removeUrl(url,updateUrls)
     }
+    $scope.selectUrl = function(id){
+        urlFeeds.selectUrl(id,updateUrls)
+    }
     var updateUrls = function(urls){
         $scope.urls = urls;
     }
