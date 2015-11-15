@@ -5,7 +5,7 @@ angular.module('500techtest')
     
     var init = function(){
         var url = urlFeeds.getUrls();
-        if(url){
+        if(url.length > 0){
             var selectedUrl = url[$routeParams.urlId].value
             getFeeds(selectedUrl)
         }
