@@ -1,4 +1,4 @@
-# 500techtest
+# angular-feed-demo
 
 # Requirements:
 - node.js (bower,npm)
